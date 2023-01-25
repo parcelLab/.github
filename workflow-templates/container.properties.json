@@ -1,0 +1,7 @@
+{
+  "name": "Container Workflow",
+  "description": "Build and Publish container image starter workflow.",
+  "iconName": "container",
+  "categories": ["Containerfile", "Dockerfile"],
+  "filePatterns": ["^Containerfile$", "^Dockerfile"]
+}

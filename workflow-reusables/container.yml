@@ -1,0 +1,70 @@
+name: Container
+on:
+  workflow_call:
+    inputs:
+      contextPath:
+        required: false
+        description: The container context to build the image
+        default: .
+        type: string
+      filePath:
+        required: true
+        description: The file path for the Container image
+        type: string
+      name:
+        required: true
+        description: The container image name
+        type: string
+      org:
+        required: false
+        description: The github organization
+        default: parcellab
+        type: string
+      registryHostname:
+        required: false
+        description: The hostname for the container registry
+        default: ghcr.io
+        type: string
+      registryUsername:
+        required: false
+        description: The username for the container registry
+        default: parcellab-dev-bot
+        type: string
+      version:
+        required: true
+        description: The version to push
+        type: string
+    secrets:
+      registryPassword:
+        required: true
+        description: The password for the container registry
+jobs:
+  container:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Checkout current git repository
+        uses: actions/checkout@v2
+      - name: Set up Docker Buildx
+        uses: docker/setup-buildx-action@v1
+      - name: Login to Container Registry
+        uses: docker/login-action@v1
+        with:
+          registry: ${{ inputs.registryHostname }}
+          username: ${{ inputs.registryUsername }}
+          password: ${{ inputs.registryPassword }}
+      - name: Build and push latest version
+        uses: docker/build-push-action@v2
+        with:
+          build-args: |
+            GITHUB_SHA=${{ github.sha }}
+            VERSION=${{ inputs.version }}
+          cache-from: type=registry,ref=${{ inputs.registryHostname }}/${{ inputs.org }}/${{ inputs.name }}
+          cache-to: type=inline
+          context: ${{ inputs.contextPath }}
+          file: ${{ inputs.filePath }}
+          platforms: linux/amd64
+          push: true
+          tags: |
+            ${{ inputs.registryHostname }}/${{ inputs.org }}/${{ inputs.name }}:latest
+            ${{ inputs.registryHostname }}/${{ inputs.org }}/${{ inputs.name }}:${{ inputs.version }}
+            ${{ inputs.registryHostname }}/${{ inputs.org }}/${{ inputs.name }}:${{ github.sha }}
