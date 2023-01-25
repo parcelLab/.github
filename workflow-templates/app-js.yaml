@@ -2,7 +2,7 @@ name: App JS
 on:
   push:
     branches:
-      - main
+      - $default-branch
     paths:
       - "**.js"
       - "**.jsx"
@@ -29,14 +29,14 @@ jobs:
     secrets:
       npmGithubReadToken: ${{ secrets.PACKAGES_READ_TOKEN }}
   draft_release:
-    if: github.ref == 'refs/heads/main'
+    if: github.ref == 'refs/heads/$default-branch'
     needs:
       - verify
     uses: parcelLab/.github/.github/workflows/release.yaml@v1
     secrets:
       repoAccessToken: ${{ secrets.REPO_ACCESS_TOKEN }}
   deploy_to_staging:
-    if: github.ref == 'refs/heads/main'
+    if: github.ref == 'refs/heads/$default-branch'
     needs:
       - verify
     uses: parcelLab/.github/.github/workflows/deployment.yaml@v1

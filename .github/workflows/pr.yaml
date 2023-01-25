@@ -7,6 +7,10 @@ on:
         description: The folder that holds the labeler configuration
         default: .github/workflows/configs/labeler.yaml
         type: string
+    secrets:
+      repoAccessToken:
+        required: true
+        description: The Github token to perform operations cross-repo (can be secrets.GITHUB_TOKEN)
 jobs:
   label:
     permissions:
@@ -18,6 +22,6 @@ jobs:
         continue-on-error: true
         uses: actions/labeler@v4
         with:
-          repo-token: ${{ secrets.GITHUB_TOKEN }}
+          repo-token: ${{ secrets.repoAccessToken }}
           configuration-path: ${{ inputs.labelerConfig }}
           sync-labels: true

@@ -17,7 +17,7 @@ on:
       ref:
         description: The github ref to deploy
         required: false
-        default: main
+        default: $default-branch
 jobs:
   from-dispatch:
     uses: parcelLab/.github/.github/workflows/deployment.yaml@v1

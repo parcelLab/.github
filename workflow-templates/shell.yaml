@@ -2,7 +2,7 @@ name: Shell
 on:
   push:
     branches:
-      - main
+      - $default-branch
     paths:
       - "**.sh"
   pull_request:
