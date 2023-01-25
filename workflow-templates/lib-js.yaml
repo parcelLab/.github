@@ -1,0 +1,31 @@
+name: Lib JS
+on:
+  push:
+    branches:
+      - $default-branch
+    paths:
+      - "**.js"
+      - "**.ts"
+      - "**.pegjs"
+      - package.json
+  pull_request:
+    paths:
+      - "**.js"
+      - "**.ts"
+      - "**.pegjs"
+      - package.json
+  workflow_dispatch:
+jobs:
+  test:
+    uses: parcelLab/.github/.github/workflows/js.yaml@v1
+    secrets:
+      npmGithubReadToken: ${{ secrets.PACKAGES_READ_TOKEN }}
+  release:
+    if: github.ref == 'refs/heads/main'
+    needs:
+      - test
+    uses: parcelLab/.github/.github/workflows/release.yaml@v1
+    with:
+      draft: false
+    secrets:
+      repoAccessToken: ${{ secrets.REPO_ACCESS_TOKEN }}
