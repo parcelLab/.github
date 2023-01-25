@@ -1,0 +1,51 @@
+name: App Python
+on:
+  push:
+    branches:
+      - main
+    paths:
+      - "**.py"
+      - Containerfile
+      - requirements.txt
+  pull_request:
+    paths:
+      - "**.py"
+      - Containerfile
+      - requirements.txt
+  workflow_dispatch:
+jobs:
+  verify:
+    uses: parcelLab/.github/.github/workflows/python.yaml@v1
+    secrets:
+      npmGithubReadToken: ${{ secrets.PACKAGES_READ_TOKEN }}
+  draft:
+    if: github.ref == 'refs/heads/main'
+    needs:
+      - verify
+    uses: parcelLab/.github/.github/workflows/release.yaml@v1
+    secrets:
+      repoAccessToken: ${{ secrets.REPO_ACCESS_TOKEN }}
+  staging:
+    if: github.ref == 'refs/heads/main'
+    needs:
+      - verify
+    uses: parcelLab/.github/.github/workflows/deployment.yaml@v1
+    with:
+      author: ${{ github.event.pusher.name }}
+      description: ${{ toJSON(github.event.head_commit.message) }}
+      env: staging
+      ref: ${{ github.ref }}
+    secrets:
+      repoAccessToken: ${{ secrets.REPO_ACCESS_TOKEN }}
+  deploy_to_prod:
+    if: github.ref_type == 'tag'
+    needs:
+      - verify
+    uses: parcelLab/.github/.github/workflows/deployment.yaml@v1
+    with:
+      author: ${{ github.event.pusher.name }}
+      description: ${{ toJSON(github.event.head_commit.message) }}
+      env: prod
+      ref: ${{ github.ref }}
+    secrets:
+      repoAccessToken: ${{ secrets.REPO_ACCESS_TOKEN }}
