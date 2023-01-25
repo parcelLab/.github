@@ -1,7 +1,7 @@
 {
-  "name": "Container Workflow",
-  "description": "Build and Publish container image starter workflow.",
-  "iconName": "container",
+  "name": "Build and Publish Container",
+  "description": "Build and publish a Dockerfile or Containerfile image to a registry.",
+  "iconName": "octicon container",
   "categories": ["Containerfile", "Dockerfile"],
   "filePatterns": ["^Containerfile$", "^Dockerfile"]
 }
