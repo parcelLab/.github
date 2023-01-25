@@ -1,4 +1,4 @@
-name: Container
+name: Reusable Container
 on:
   workflow_call:
     inputs:
