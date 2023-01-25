@@ -1,0 +1,13 @@
+name: parcelLab Config
+on:
+  push:
+    branches:
+      - $default-branch
+    paths:
+      - plconfig.yaml
+  workflow_dispatch:
+jobs:
+  sync:
+    uses: parcelLab/.github/.github/workflows/plconfig.yaml@v1
+    secrets:
+      repoAccessToken: ${{ secrets.REPO_ACCESS_TOKEN }}

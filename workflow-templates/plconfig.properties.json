@@ -1,0 +1,7 @@
+{
+  "name": "Apply changes from parcelLab Config",
+  "description": "Trigger GitOps pipeline based on the changes loaded from `plconfig.yaml`.",
+  "iconName": "octicon code",
+  "categories": ["Deployment", "Automation"],
+  "filePatterns": ["plconfig.yaml$"]
+}
