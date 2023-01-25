@@ -1,0 +1,15 @@
+name: Shell
+on:
+  push:
+    branches:
+      - main
+    paths:
+      - "**.sh"
+  pull_request:
+    paths:
+      - "**.sh"
+  workflow_dispatch:
+jobs:
+  lint:
+    uses: parcelLab/.github/workflow-reusables/shell.yml@v1
+    secrets: inherit

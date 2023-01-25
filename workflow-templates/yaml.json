@@ -1,0 +1,7 @@
+{
+  "name": "Lint YAML files",
+  "description": "Lint YAML files with Prettier.",
+  "iconName": "octicon file",
+  "categories": ["Continuous integration", "YAML"],
+  "filePatterns": [".*\\.yaml$", ".*\\.yml$"]
+}

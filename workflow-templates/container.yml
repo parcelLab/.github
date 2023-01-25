@@ -37,7 +37,7 @@ jobs:
           echo "version=$VERSION" >> $GITHUB_OUTPUT
   build-container:
     needs: read-version
-    uses: parcelLab/.github/workflows-reusables/container.yml@v1
+    uses: parcelLab/.github/workflow-reusables/container.yml@v1
     with:
       app: MYAPPNAME
       filePath: Containerfile

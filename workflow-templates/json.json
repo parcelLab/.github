@@ -1,0 +1,7 @@
+{
+  "name": "Lint JSON files",
+  "description": "Lint JSON files with prettier.",
+  "iconName": "octicon file",
+  "categories": ["Continuous integration", "JSON"],
+  "filePatterns": [".*\\.json$"]
+}

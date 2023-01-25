@@ -1,0 +1,15 @@
+name: JSON
+on:
+  push:
+    branches:
+      - main
+    paths:
+      - "**.json"
+  pull_request:
+    paths:
+      - "**.json"
+  workflow_dispatch:
+jobs:
+  lint:
+    uses: parcelLab/.github/workflow-reusables/json.yml@v1
+    secrets: inherit

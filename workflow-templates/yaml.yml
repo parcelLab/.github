@@ -1,0 +1,17 @@
+name: YAML
+on:
+  push:
+    branches:
+      - main
+    paths:
+      - "**.yml"
+      - "**.yaml"
+  pull_request:
+    paths:
+      - "**.yml"
+      - "**.yaml"
+  workflow_dispatch:
+jobs:
+  lint:
+    uses: parcelLab/.github/workflow-reusables/_yaml.yml@v1
+    secrets: inherit
