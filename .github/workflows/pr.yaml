@@ -1,0 +1,23 @@
+name: Reusable PR
+on:
+  workflow_call:
+    inputs:
+      labelerConfig:
+        required: false
+        description: The folder that holds the labeler configuration
+        default: .github/workflows/configs/labeler.yaml
+        type: string
+jobs:
+  label:
+    permissions:
+      contents: read
+      pull-requests: write
+    runs-on: ubuntu-latest
+    steps:
+      - name: Label PR based on pushed file paths
+        continue-on-error: true
+        uses: actions/labeler@v4
+        with:
+          repo-token: ${{ secrets.GITHUB_TOKEN }}
+          configuration-path: ${{ inputs.labelerConfig }}
+          sync-labels: true
