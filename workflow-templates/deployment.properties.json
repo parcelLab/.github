@@ -1,0 +1,6 @@
+{
+  "name": "Create Github Deployment",
+  "description": "Creates a Github Deployment object based on plconfig's values. Supports Kubernetes. Future support for Cloudfront, Lambda and NPM.",
+  "iconName": "octicon rocket",
+  "categories": ["Deployment"]
+}
