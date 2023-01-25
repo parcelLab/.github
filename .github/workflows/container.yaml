@@ -51,7 +51,7 @@ jobs:
         with:
           registry: ${{ inputs.registryHostname }}
           username: ${{ inputs.registryUsername }}
-          password: ${{ inputs.registryPassword }}
+          password: ${{ secrets.registryPassword }}
       - name: Build and push latest version
         uses: docker/build-push-action@v2
         with:
