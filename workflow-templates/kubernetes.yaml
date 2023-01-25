@@ -1,0 +1,14 @@
+name: Kubernetes
+on:
+  deployment:
+jobs:
+  deploy:
+    uses: parcelLab/.github/.github/workflows/kubernetes.yaml@v1
+    with:
+      slackChannelProd: CXXXXXXXXX1
+      slackChannelStaging: CXXXXXXXXX2
+      slackChannelTest: CXXXXXXXXX3
+    secrets:
+      npmGithubReadToken: ${{ secrets.PACKAGES_READ_TOKEN }}
+      repoAccessToken: ${{ secrets.REPO_ACCESS_TOKEN }}
+      slackBotToken: ${{ secrets.SLACK_BOT_TOKEN }} # Required if slack channel ids are provided

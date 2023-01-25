@@ -15,15 +15,15 @@ on:
         required: true
         description: The container image name
         type: string
-      org:
-        required: false
-        description: The github organization
-        default: parcellab
-        type: string
       registryHostname:
         required: false
         description: The hostname for the container registry
         default: ghcr.io
+        type: string
+      registryOrg:
+        required: false
+        description: The registry organization
+        default: parcellab
         type: string
       registryUsername:
         required: false
@@ -58,13 +58,13 @@ jobs:
           build-args: |
             GITHUB_SHA=${{ github.sha }}
             VERSION=${{ inputs.version }}
-          cache-from: type=registry,ref=${{ inputs.registryHostname }}/${{ inputs.org }}/${{ inputs.name }}
+          cache-from: type=registry,ref=${{ inputs.registryHostname }}/${{ inputs.registryOrg }}/${{ inputs.name }}
           cache-to: type=inline
           context: ${{ inputs.contextPath }}
           file: ${{ inputs.filePath }}
           platforms: linux/amd64
           push: true
           tags: |
-            ${{ inputs.registryHostname }}/${{ inputs.org }}/${{ inputs.name }}:latest
-            ${{ inputs.registryHostname }}/${{ inputs.org }}/${{ inputs.name }}:${{ inputs.version }}
-            ${{ inputs.registryHostname }}/${{ inputs.org }}/${{ inputs.name }}:${{ github.sha }}
+            ${{ inputs.registryHostname }}/${{ inputs.registryOrg }}/${{ inputs.name }}:latest
+            ${{ inputs.registryHostname }}/${{ inputs.registryOrg }}/${{ inputs.name }}:${{ inputs.version }}
+            ${{ inputs.registryHostname }}/${{ inputs.registryOrg }}/${{ inputs.name }}:${{ github.sha }}

@@ -1,0 +1,7 @@
+{
+  "name": "Deploy a Kubernetes application",
+  "description": "Deploys a Kubernetes application using GitOps.",
+  "iconName": "octicon rocket",
+  "categories": ["Deployment", "Kubernetes", "Helm"],
+  "filePatterns": ["^Containerfile$", "^Dockerfile"]
+}
