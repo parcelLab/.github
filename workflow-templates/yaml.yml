@@ -14,4 +14,3 @@ on:
 jobs:
   lint:
     uses: parcelLab/.github/workflow-reusables/_yaml.yml@v1
-    secrets: inherit
