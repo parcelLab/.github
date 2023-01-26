@@ -21,7 +21,7 @@ jobs:
     secrets:
       npmGithubReadToken: ${{ secrets.PACKAGES_READ_TOKEN }}
   release:
-    if: github.ref == 'refs/heads/main'
+    if: github.ref == 'refs/heads/$default-branch'
     needs:
       - test
     uses: parcelLab/.github/.github/workflows/release.yaml@v1
