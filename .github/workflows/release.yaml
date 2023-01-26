@@ -36,7 +36,7 @@ jobs:
     runs-on: ubuntu-latest
     steps:
       - name: Create Github release
-        uses: darioblanco/release-wizard@v2.0.2
+        uses: darioblanco/release-wizard@v2.0.3
         with:
           draft: ${{ inputs.draft }}
           prerelease: ${{ inputs.prerelease }}

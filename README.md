@@ -1,5 +1,7 @@
 # Github Configuration
 
+[![Verify workflows](https://github.com/parcelLab/.github/actions/workflows/ci.verify-workflows.yaml/badge.svg)](https://github.com/parcelLab/.github/actions/workflows/ci.verify-workflows.yaml)
+
 The `.github` repository works as a fallback for all the repositories in @parcelLab
 that don't have an actual `.github` directory.
 
