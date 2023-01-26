@@ -58,7 +58,9 @@ jobs:
       - name: Load vars
         id: vars
         run: |
+          # shellcheck disable=SC2086
           echo "namespace-path=remote/${{ inputs.deploymentRepoPath }}/${{ steps.namespace.outputs.result }}" >> $GITHUB_OUTPUT
+          # shellcheck disable=SC2086
           echo "do-not-edit=DO NOT EDIT. Auto generated from ${{ steps.name.outputs.result }} plconfig.yaml (replaces values.yaml instead)" >> $GITHUB_OUTPUT
       # Load plconfig values scoping to a subchart
       - name: Load external values for all environments
