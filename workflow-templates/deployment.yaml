@@ -20,7 +20,7 @@ on:
         default: $default-branch
 jobs:
   from-dispatch:
-    uses: parcelLab/.github/.github/workflows/deployment.yaml@v1
+    uses: parcelLab/ci/.github/workflows/deployment.yaml@v1
     with:
       author: ${{ github.event.inputs.author }}
       description: ${{ github.event.inputs.description }}

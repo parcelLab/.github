@@ -8,6 +8,6 @@ on:
   workflow_dispatch:
 jobs:
   sync:
-    uses: parcelLab/.github/.github/workflows/plconfig.yaml@v1
+    uses: parcelLab/ci/.github/workflows/plconfig.yaml@v1
     secrets:
       repoAccessToken: ${{ secrets.REPO_ACCESS_TOKEN }}

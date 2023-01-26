@@ -17,14 +17,14 @@ on:
   workflow_dispatch:
 jobs:
   test:
-    uses: parcelLab/.github/.github/workflows/js.yaml@v1
+    uses: parcelLab/ci/.github/workflows/js.yaml@v1
     secrets:
       npmGithubReadToken: ${{ secrets.PACKAGES_READ_TOKEN }}
   release:
     if: github.ref == 'refs/heads/$default-branch'
     needs:
       - test
-    uses: parcelLab/.github/.github/workflows/release.yaml@v1
+    uses: parcelLab/ci/.github/workflows/release.yaml@v1
     with:
       draft: false
     secrets:

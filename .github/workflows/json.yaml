@@ -1,13 +1,14 @@
-name: Reusable JSON
+name: JSON
 on:
-  workflow_call:
+  push:
+    branches:
+      - main
+    paths:
+      - "**.json"
+  pull_request:
+    paths:
+      - "**.json"
+  workflow_dispatch:
 jobs:
-  json:
-    runs-on: ubuntu-latest
-    steps:
-      - name: Checkout current git repository
-        uses: actions/checkout@v3
-      - name: Lint JSON
-        uses: actionsx/prettier@v2
-        with:
-          args: --check "**/*.json"
+  lint:
+    uses: parcelLab/ci/.github/workflows/json.yaml@v1

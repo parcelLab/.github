@@ -15,21 +15,21 @@ on:
   workflow_dispatch:
 jobs:
   verify:
-    uses: parcelLab/.github/.github/workflows/python.yaml@v1
+    uses: parcelLab/ci/.github/workflows/python.yaml@v1
     secrets:
       npmGithubReadToken: ${{ secrets.PACKAGES_READ_TOKEN }}
   draft:
     if: github.ref == 'refs/heads/$default-branch'
     needs:
       - verify
-    uses: parcelLab/.github/.github/workflows/release.yaml@v1
+    uses: parcelLab/ci/.github/workflows/release.yaml@v1
     secrets:
       repoAccessToken: ${{ secrets.REPO_ACCESS_TOKEN }}
   staging:
     if: github.ref == 'refs/heads/$default-branch'
     needs:
       - verify
-    uses: parcelLab/.github/.github/workflows/deployment.yaml@v1
+    uses: parcelLab/ci/.github/workflows/deployment.yaml@v1
     with:
       author: ${{ github.event.pusher.name }}
       description: ${{ toJSON(github.event.head_commit.message) }}
@@ -41,7 +41,7 @@ jobs:
     if: github.ref_type == 'tag'
     needs:
       - verify
-    uses: parcelLab/.github/.github/workflows/deployment.yaml@v1
+    uses: parcelLab/ci/.github/workflows/deployment.yaml@v1
     with:
       author: ${{ github.event.pusher.name }}
       description: ${{ toJSON(github.event.head_commit.message) }}

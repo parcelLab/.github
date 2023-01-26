@@ -11,4 +11,4 @@ on:
   workflow_dispatch:
 jobs:
   lint:
-    uses: parcelLab/.github/.github/workflows/shell.yaml@v1
+    uses: parcelLab/ci/.github/workflows/shell.yaml@v1

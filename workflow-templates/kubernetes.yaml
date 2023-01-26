@@ -3,7 +3,7 @@ on:
   deployment:
 jobs:
   deploy:
-    uses: parcelLab/.github/.github/workflows/kubernetes.yaml@v1
+    uses: parcelLab/ci/.github/workflows/kubernetes.yaml@v1
     with:
       slackChannelProd: CXXXXXXXXX1
       slackChannelStaging: CXXXXXXXXX2
