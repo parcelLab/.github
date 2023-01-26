@@ -1,11 +1,12 @@
 name: Reusable Python
 on:
   workflow_call:
-    pythonVersion:
-      required: false
-      description: The python version to provide (e.g. `3.x`)
-      default: 3.x
-      type: string
+    inputs:
+      pythonVersion:
+        required: false
+        description: The python version to provide (e.g. `3.x`)
+        default: 3.x
+        type: string
 jobs:
   python:
     runs-on: ubuntu-latest
