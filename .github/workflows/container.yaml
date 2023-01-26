@@ -8,8 +8,9 @@ on:
         default: .
         type: string
       filePath:
-        required: true
+        required: false
         description: The file path for the Container image
+        default: Containerfile
         type: string
       name:
         required: true
