@@ -25,7 +25,7 @@ on:
       templatePath:
         required: false
         description: The path within the .github/ folder for the release drafter configuration
-        default: workflows/configs/release-wizard.md
+        default: release-wizard.md
         type: string
     secrets:
       repoAccessToken:

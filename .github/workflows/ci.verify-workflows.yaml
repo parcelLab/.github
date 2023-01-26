@@ -30,4 +30,4 @@ jobs:
       - yamllint
     uses: parcelLab/.github/.github/workflows/release.yaml@main
     secrets:
-      repoAccessToken: ${{ secrets.REPO_ACCESS_TOKEN }}
+      repoAccessToken: ${{ secrets.REPO_ACCESS_TOKEN_OPEN_SOURCE }}

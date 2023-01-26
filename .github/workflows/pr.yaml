@@ -5,7 +5,7 @@ on:
       labelerConfig:
         required: false
         description: The folder that holds the labeler configuration
-        default: .github/workflows/configs/labeler.yaml
+        default: .github/labeler.yaml
         type: string
     secrets:
       repoAccessToken:
