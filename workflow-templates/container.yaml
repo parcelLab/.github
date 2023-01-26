@@ -39,8 +39,9 @@ jobs:
     needs: read-version
     uses: parcelLab/.github/.github/workflows/container.yaml@v1
     with:
-      app: MYAPPNAME
+      name: MYAPPNAME
       filePath: Containerfile
       version: ${{ needs.read-version.outputs.version }}
     secrets:
+      npmGithubReadToken: ${{ secrets.PACKAGES_READ_TOKEN }}
       registryPassword: ${{ secrets.REPO_ACCESS_TOKEN }}

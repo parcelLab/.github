@@ -35,6 +35,9 @@ on:
         description: The version to push
         type: string
     secrets:
+      npmGithubReadToken:
+        required: false
+        description: The Github token with permissions to read NPM private packages
       registryPassword:
         required: true
         description: The password for the container registry
@@ -57,6 +60,7 @@ jobs:
         with:
           build-args: |
             GITHUB_SHA=${{ github.sha }}
+            NPM_GITHUB_TOKEN=${{ secrets.npmGithubReadToken }}
             VERSION=${{ inputs.version }}
           cache-from: type=registry,ref=${{ inputs.registryHostname }}/${{ inputs.registryOrg }}/${{ inputs.name }}
           cache-to: type=inline
