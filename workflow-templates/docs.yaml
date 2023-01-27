@@ -1,0 +1,16 @@
+name: Docs
+on:
+  push:
+    branches:
+      - $default-branch
+    paths:
+      - "**.md"
+  pull_request:
+    paths:
+      - "**.md"
+  workflow_dispatch:
+jobs:
+  docs:
+    uses: parcelLab/ci/.github/workflows/docs.yaml@v1
+    secrets:
+      repoAccessToken: ${{ secrets.REPO_ACCESS_TOKEN }}
