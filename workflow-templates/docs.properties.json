@@ -1,7 +1,7 @@
 {
   "name": "Collect documentation files",
   "description": "Collect Markdown files from a repository and push them to a central documentation repo.",
-  "iconName": "octicon container",
+  "iconName": "octicon markdown",
   "categories": ["Markdown", "Automation", "Utilities"],
   "filePatterns": [".*\\.md$"]
 }
